@@ -48,3 +48,36 @@ def selection_sort(vetor):
     print(f'Tempo de execução (segundos): {tempo_segundos}')
     print(f'Tempo de execução (minutos): {tempo_segundos/60}')
     return vetor
+
+
+def merge_sort(vetor):
+    if len(vetor) > 1:
+        meio = len(vetor)//2
+        metade_esquerda = vetor[:meio]
+        metade_direita = vetor[meio:]
+
+        merge_sort(metade_esquerda)
+        merge_sort(metade_direita)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(metade_esquerda) and j < len(metade_direita):
+            if metade_esquerda[i] < metade_direita[j]:
+                vetor[k] = metade_esquerda[i]
+                i = i+1
+            else:
+                vetor[k] = metade_direita[j]
+                j = j+1
+            k = k+1
+
+        while i < len(metade_esquerda):
+            vetor[k] = metade_esquerda[i]
+            i = i+1
+            k = k+1
+
+        while j < len(metade_direita):
+            vetor[k] = metade_direita[j]
+            j = j+1
+            k = k+1
