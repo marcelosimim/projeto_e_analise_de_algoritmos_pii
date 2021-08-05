@@ -1,0 +1,13 @@
+print('VETOR ORDENADO - INSERTION: ')
+insertion_sort(vetor_ordenado)
+print('\nVETOR DESORDENADO - INSERTION: ')
+insertion_sort(vetor_desordenado)
+print('\nVETOR ALEATORIO - INSERTION: ')
+insertion_sort(vetor_aleatorio)
+
+print('\n\nVETOR ORDENADO - SELECTION: ')
+selection_sort(vetor_ordenado)
+print('\nVETOR DESORDENADO - SELECTION: ')
+selection_sort(vetor_desordenado)
+print('\nVETOR ALEATORIO - SELECTION: ')
+selection_sort(vetor_aleatorio)
