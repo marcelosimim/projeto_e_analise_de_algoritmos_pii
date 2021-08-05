@@ -51,49 +51,51 @@ def selection_sort(vetor):
 
 
 def merge_sort(vetor):
-    dados = [0, 0]  # comparações e movimentações
-    dados_esq = [0, 0]
-    dados_dir = [0, 0]
+    tempo_segundos = 0
+    inicio = time.time()
+    comparacoes = 0
+    movimentacoes = 0
 
-    dados[0] += 1  # comparacao
     if len(vetor) > 1:
         meio = len(vetor)//2
         metade_esquerda = vetor[:meio]
         metade_direita = vetor[meio:]
 
-        dados_esq = merge_sort(metade_esquerda)
-        dados_dir = merge_sort(metade_direita)
+        c, m, t = merge_sort(metade_esquerda)
+        comparacoes += c
+        movimentacoes += m
+        tempo_segundos += t
+        c, m, t = merge_sort(metade_direita)
+        comparacoes += c
+        movimentacoes += m
+        tempo_segundos += t
 
         i = 0
         j = 0
         k = 0
 
         while i < len(metade_esquerda) and j < len(metade_direita):
-            dados[0] += 1  # comparacao
+            comparacoes += 1  # comparacao
             if metade_esquerda[i] < metade_direita[j]:
-                dados[1] += 1  # movimentacao
                 vetor[k] = metade_esquerda[i]
                 i = i+1
             else:
-                dados[1] += 1  # movimentacao
                 vetor[k] = metade_direita[j]
                 j = j+1
             k = k+1
 
         while i < len(metade_esquerda):
-            dados[1] += 1  # movimentacao
+            comparacoes += 1  # comparacao
             vetor[k] = metade_esquerda[i]
             i = i+1
             k = k+1
 
         while j < len(metade_direita):
-            dados[1] += 1  # movimentacao
+            comparacoes += 1  # comparacao
             vetor[k] = metade_direita[j]
             j = j+1
             k = k+1
-    dados[0] += dados_esq[0]
-    dados[0] += dados_dir[0]
-    dados[1] += dados_esq[1]
-    dados[1] += dados_dir[1]
 
-    return dados
+    fim = time.time()
+    tempo_segundos = fim - inicio
+    return comparacoes, movimentacoes, tempo_segundos
